@@ -1,213 +1,97 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+	<head lang="en" th:replace="fragments/header :: header"></head>
+	
+	<body>
+		<nav th:replace="fragments/navigation :: nav"></nav>
 
-    <title>Blog Post - Start Bootstrap Template</title>
-    
-    <script src="/sources/jquery/jquery-3.3.1.js"></script>
-    <script src="/sources/popper/popper.js"></script>
-    <script src="/sources/bootstrap/js/bootstrap.js"></script>
-    <script src="/sources/ckeditor/ckeditor.js"></script>
-    
-    <script type="text/javascript">
-	  $(document).ready(function() {
-
-	  });	
-	</script>
-
-
-	<link href="/sources/ckeditor/render_contents.css" rel="stylesheet">
-    <link href="/sources/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="/sources/css/blog-post.css" rel="stylesheet">
-    
-
-  </head>
-
-  <body>
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="#">Start Bootstrap</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Services</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Page Content -->
-    <div class="container">
-      <div class="row">
-        <!-- Post Content Column -->
-        <div class="col-lg-8">
-          <!-- Title -->
-          <h1 class="mt-4"></h1>
-
-          <!-- Author -->
-          <p class="lead" th:text="${post.postTitle}"></p>
-
-          <!-- Date/Time -->
-          <p>Posted on January 1, 2018 at 12:00 PM</p>
-
-          <hr>
-
-          <!-- Preview Image 
-          <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
-          -->
-
-          <hr>
-
-          <!-- Post Content -->
-          <div th:utext="${post.postContent}" class="editor" id="editor"></div>
-          <hr>
-
-          <!-- Comments Form -->
-          <div class="card my-4">
-            <h5 class="card-header">Leave a Comment:</h5>
-            <div class="card-body">
-              <form>
-                <div class="form-group">
-                  <textarea class="form-control" rows="3"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </form>
-            </div>
-          </div>
-
-          <!-- Single Comment -->
-          <div class="media mb-4">
-            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-            <div class="media-body">
-              <h5 class="mt-0">Commenter Name</h5>
-              Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-            </div>
-          </div>
-
-          <!-- Comment with nested comments -->
-          <div class="media mb-4">
-            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-            <div class="media-body">
-              <h5 class="mt-0">Commenter Name</h5>
-              Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-
-              <div class="media mt-4">
-                <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                <div class="media-body">
-                  <h5 class="mt-0">Commenter Name</h5>
-                  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                </div>
-              </div>
-
-              <div class="media mt-4">
-                <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                <div class="media-body">
-                  <h5 class="mt-0">Commenter Name</h5>
-                  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Sidebar Widgets Column -->
-        <div class="col-md-4">
-
-          <!-- Search Widget -->
-          <div class="card my-4">
-            <h5 class="card-header">Search</h5>
-            <div class="card-body">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for...">
-                <span class="input-group-btn">
-                  <button class="btn btn-secondary" type="button">Go!</button>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Categories Widget -->
-          <div class="card my-4">
-            <h5 class="card-header">Categories</h5>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-lg-6">
-                  <ul class="list-unstyled mb-0">
-                    <li>
-                      <a href="#">Web Design</a>
-                    </li>
-                    <li>
-                      <a href="#">HTML</a>
-                    </li>
-                    <li>
-                      <a href="#">Freebies</a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="col-lg-6">
-                  <ul class="list-unstyled mb-0">
-                    <li>
-                      <a href="#">JavaScript</a>
-                    </li>
-                    <li>
-                      <a href="#">CSS</a>
-                    </li>
-                    <li>
-                      <a href="#">Tutorials</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Side Widget -->
-          <div class="card my-4">
-            <h5 class="card-header">Side Widget</h5>
-            <div class="card-body">
-              You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-      <!-- /.row -->
-
-    </div>
-    <!-- /.container -->
-
-    <!-- Footer -->
-    <footer class="py-5 bg-dark">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
-      </div>
-      <!-- /.container -->
-    </footer>
-
-  </body>
+		<!-- Page Content -->
+		<div class="container-fluid">
+		<div class="row">
+		<!-- Post Content Column -->
+			<div class="col-lg-9">
+			
+				<!-- Title -->
+				<h1 class="mt-4"></h1>
+				<p class="lead" th:text="${post.postTitle}"></p>
+		
+				<!-- Date/Time -->
+				<p th:text="'Posted on ' + ${#temporals.format(post.postDate, 'yyyy/MM/dd HH:mm')}"></p>
+				<hr>
+				<!-- Preview Image -->
+				<img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
+					
+				<hr>
+		
+				<!-- Post Content -->
+				<div th:utext="${post.postContent}" class="postcontent" id="postcontent"></div>
+				<hr>
+		
+				<!-- Comments Form -->
+				<div class="card my-4">
+					<h5 class="card-header">Leave a Comment:</h5>
+					<div class="card-body" th:switch="${user}">
+						<form th:case="null" th:action="@{/signin/facebook}" method="POST">
+							<input type="hidden" name="scope" value="public_profile" />
+							<input type="submit" value="Login using Facebook"/>
+						</form>
+						<form th:case="*" action="/comments/comment" method="POST">
+							<div class="form-group">
+						    	<textarea name="commentContent" class="form-control" rows="3"></textarea>
+						    	<input name="postId" type="hidden" th:value="${post.postId}">
+							</div>
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</form>
+					</div>
+				</div>
+				
+				
+				<!-- Comments -->
+				<th:block th:if="${comments} != null">
+					<th:block th:each="comment : ${comments}">
+					<div class="media mb-4">
+						<img class="d-flex mr-3 rounded-circle" th:src="${comment.commenterPhoto}" alt="">
+					  	<div class="media-body">
+						    <span class="mt-0" th:text="${comment.commenterName}"></span><span th:text="' commented on ' + ${#temporals.format(comment.commentDate, 'yyyy/MM/dd HH:mm')}"></span>
+						    <p th:text="${comment.commentContent}"></p>
+						    <button type="button" class="replyButton">Reply</button>
+					     	<form class="replyForm" action="/comments/subcomment" method="POST">
+					     		<div class="form-group">
+						     		<textarea name="subCommentContent" class="form-control" rows="2"></textarea>
+						     		<input name="commentId" type="hidden" th:value="${comment.commentId}">
+						     		<button type="submit" class="replySubmitButton">Submit</button>
+					     		</div>
+					     	</form>
+						    <!-- Subcomments -->
+						    <th:block th:if="${comment.subComments} != null">
+						    	<th:block th:each="subc : ${comment.subComments}">
+							    <div class="media mt-4">
+				                	<img class="d-flex mr-3 rounded-circle" th:src="${subc.subCommenterPhoto}" alt="">
+				                	<div class="media-body">
+			                  			<span class="mt-0" th:text="${subc.subCommenterName}"></span><span th:text="' commented on ' + ${#temporals.format(subc.subCommentDate, 'yyyy/MM/dd HH:mm')}"></span>
+			                  			<p th:text="${subc.subCommentContent}"></p>
+				                	</div>
+				             	</div>
+				             	</th:block>
+			             	</th:block>
+						</div>
+					</div>
+					</th:block>
+				</th:block>
+			</div>
+		
+			<!-- Sidebar Widgets Column -->
+			<div th:replace="fragments/sidebar :: side"></div>
+		
+		</div>
+		<!-- /.row -->
+		
+		</div>
+		<!-- /.container -->
+		
+		<!-- Footer -->
+		<footer th:replace="fragments/footer :: footer"></footer>
+		
+	</body>
 
 </html>

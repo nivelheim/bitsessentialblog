@@ -3,7 +3,7 @@ Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
 */
 
-.editor body
+.postcontent body
 {
 	/* Font */
 	font-family: sans-serif, Arial, Verdana, "Trebuchet MS";
@@ -18,7 +18,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
 	margin: 20px;
 }
 
-.editor .cke_editable
+.postcontent .cke_editable
 {
 	font-size: 13px;
 	line-height: 1.6;
@@ -27,7 +27,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
 	word-wrap: break-word;
 }
 
-.editor blockquote
+.postcontent blockquote
 {
 	font-style: italic;
 	font-family: Georgia, Times, "Times New Roman", serif;
@@ -40,24 +40,24 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
 	padding-right: 8px;
 }
 
-.editor .cke_contents_ltr blockquote
+.postcontent .cke_contents_ltr blockquote
 {
 	
 }
 
-.editor .cke_contents_rtl blockquote
+.postcontent .cke_contents_rtl blockquote
 {
 	padding-left: 8px;
 	padding-right: 20px;
 	border-right-width: 5px;
 }
 
-.editor a
+.postcontent a
 {
 	color: #0782C1;
 }
 
-.editor ol,.editor ul,.editor dl
+.postcontent ol,.postcontent ul,.postcontent dl
 {
 	/* IE7: reset rtl list margin. (#7334) */
 	*margin-right: 0px;
@@ -65,19 +65,19 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
 	padding: 0 40px;
 }
 
-.editor h1,.editor h2,.editor h3,.editor h4,.editor h5,.editor h6
+.postcontent h1,.postcontent h2,.postcontent h3,.postcontent h4,.postcontent h5,.postcontent h6
 {
 	font-weight: normal;
 	line-height: 1.2;
 }
 
-.editor hr
+.postcontent hr
 {
 	border: 0px;
 	border-top: 1px solid #ccc;
 }
 
-.editor img.right
+.postcontent img.right
 {
 	border: 1px solid #ccc;
 	float: right;
@@ -85,7 +85,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
 	padding: 5px;
 }
 
-.editor img.left
+.postcontent img.left
 {
 	border: 1px solid #ccc;
 	float: left;
@@ -93,7 +93,7 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
 	padding: 5px;
 }
 
-.editor pre
+.postcontent pre
 {
 	white-space: pre-wrap; /* CSS 2.1 */
 	word-wrap: break-word; /* IE7 */
@@ -101,17 +101,17 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
 	tab-size: 4;
 }
 
-.editor .marker
+.postcontent .marker
 {
 	background-color: Yellow;
 }
 
-.editor span[lang]
+.postcontent span[lang]
 {
 	font-style: italic;
 }
 
-.editor figure
+.postcontent figure
 {
 	text-align: center;
 	outline: solid 1px #ccc;
@@ -121,13 +121,13 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
 	display: inline-block;
 }
 
-.editor figure > figcaption
+.postcontent figure > figcaption
 {
 	text-align: center;
 	display: block; /* For IE8 */
 }
 
-.editor a > img {
+.postcontent a > img {
 	padding: 1px;
 	margin: 1px;
 	border: none;
@@ -135,12 +135,12 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
 }
 
 /* Widget Styles */
-.editor .code-featured
+.postcontent .code-featured
 {
 	border: 5px solid red;
 }
 
-.editor .math-featured
+.postcontent .math-featured
 {
 	padding: 20px;
 	box-shadow: 0 0 2px rgba(200, 0, 0, 1);
@@ -148,59 +148,59 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
 	margin: 10px;
 }
 
-.editor .image-clean
+.postcontent .image-clean
 {
 	border: 0;
 	background: none;
 	padding: 0;
 }
 
-.editor .image-clean > figcaption
+.postcontent .image-clean > figcaption
 {
 	font-size: .9em;
 	text-align: right;
 }
 
-.editor .image-grayscale
+.postcontent .image-grayscale
 {
 	background-color: white;
 	color: #666;
 }
 
-.editor .image-grayscale img, .editor img.image-grayscale
+.postcontent .image-grayscale img, .postcontent img.image-grayscale
 {
 	filter: grayscale(100%);
 }
 
-.editor .embed-240p
+.postcontent .embed-240p
 {
 	max-width: 426px;
 	max-height: 240px;
 	margin:0 auto;
 }
 
-.editor .embed-360p
+.postcontent .embed-360p
 {
 	max-width: 640px;
 	max-height: 360px;
 	margin:0 auto;
 }
 
-.editor .embed-480p
+.postcontent .embed-480p
 {
 	max-width: 854px;
 	max-height: 480px;
 	margin:0 auto;
 }
 
-.editor .embed-720p
+.postcontent .embed-720p
 {
 	max-width: 1280px;
 	max-height: 720px;
 	margin:0 auto;
 }
 
-.editor .embed-1080p
+.postcontent .embed-1080p
 {
 	max-width: 1920px;
 	max-height: 1080px;

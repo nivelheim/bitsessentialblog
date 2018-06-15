@@ -14,12 +14,11 @@ public class FacebookSignInAdapter implements SignInAdapter {
 	    
     @Override
     public String signIn(String localUserId, Connection<?> connection, NativeWebRequest request) {
-    	SecurityContextHolder.getContext().setAuthentication(
-    	          new UsernamePasswordAuthenticationToken(
-    	          connection.getDisplayName(), null, 
-    	          Arrays.asList(new SimpleGrantedAuthority("FACEBOOK_USER"))));
+    	String userId = connection.getKey().getProviderUserId(); 
+		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userId, null, Arrays.asList(new SimpleGrantedAuthority("FACEBOOK_USER")));
+    	SecurityContextHolder.getContext().setAuthentication(token);
     	         
-    	        return null;
+    	return null;
     }
     
 }

@@ -1,0 +1,45 @@
+
+<head th:fragment="header">
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <meta name="description" content="">
+   <meta name="author" content="">
+
+   <title>Blog Home - Start Bootstrap Template</title>
+
+   <!-- Bootstrap core CSS -->
+   <link href="/sources/bootstrap/css/bootstrap.css" rel="stylesheet">
+   <link href="/sources/ckeditor/render_contents.css" rel="stylesheet">
+
+   <!-- Custom styles for this template -->
+   <link href="/sources/css/blog-home.css" rel="stylesheet">
+   
+	<script src="/sources/jquery/jquery-3.3.1.js"></script>
+	<script src="/sources/popper/popper.js"></script>
+	<script src="/sources/bootstrap/js/bootstrap.js"></script>
+	<script src="/sources/ckeditor/ckeditor.js"></script>
+
+	<script type="text/javascript" th:inline="javascript">
+		$(document).ready(function() {
+			if ($("#editor").length) {
+				CKEDITOR.replace( 'editor' );
+			}			
+
+			if ($(".replyButton").length) {
+				$(".replyButton").click(function() {
+					var i = $(".replyButton").index(this);
+
+					if ($(".replyForm").eq(i).css("display") == "none") {
+						$(".replyForm").eq(i).css("display", "block");
+					}
+
+					else {
+						$(".replyForm").eq(i).css("display", "none");
+					}
+				});
+			}
+
+		});	
+	</script>
+</head>
+

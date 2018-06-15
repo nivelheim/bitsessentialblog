@@ -1,7 +1,6 @@
 package com.bitsessential.blog.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -25,15 +24,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
         		.authorizeRequests()
-	                .antMatchers(HttpMethod.POST, SecurityConstants.SIGN_UP_URL).permitAll()
-	                .antMatchers(HttpMethod.GET, "/*").permitAll()
-	                .antMatchers(HttpMethod.GET, "/sources/**").permitAll()
-	                .antMatchers(HttpMethod.GET, "/posts/post/*").permitAll()
-	                .antMatchers(HttpMethod.GET, "/posts").permitAll()
-	                .antMatchers(HttpMethod.GET, "/posts/editor/").hasAnyRole("admin")
-	                .antMatchers(HttpMethod.GET, "/posts/editor/*/").hasAnyRole("admin")
-	                .antMatchers(HttpMethod.GET, "/connect/facebook").permitAll()
-	                .anyRequest().authenticated()
+	                .antMatchers(HttpMethod.GET, "/editor").hasAuthority("admin")
+	                .antMatchers(HttpMethod.GET, "/editor/**").hasAuthority("admin")
+	                .antMatchers(HttpMethod.POST, "/post").hasAuthority("admin")
+	                .antMatchers(HttpMethod.POST, "/comments").hasAuthority("FACEBOOK_USER")
+	                .antMatchers(HttpMethod.POST, "/comments").hasAuthority("admin")
 	                .and()
                 .formLogin()
                 	.loginPage("/user/login")
