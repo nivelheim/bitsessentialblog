@@ -1,5 +1,6 @@
 keystore.p12
 application.properties
+bfg.jar
 
 /target/
 !.mvn/wrapper/maven-wrapper.jar
