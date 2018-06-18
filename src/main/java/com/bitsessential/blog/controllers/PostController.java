@@ -3,11 +3,14 @@ package com.bitsessential.blog.controllers;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.bitsessential.blog.entities.Category;
 import com.bitsessential.blog.entities.Comment;
 import com.bitsessential.blog.entities.FacebookUser;
 import com.bitsessential.blog.entities.Post;
 import com.bitsessential.blog.entities.SubComment;
+import com.bitsessential.blog.repos.CategoryRepository;
 import com.bitsessential.blog.repos.CommentRepository;
 import com.bitsessential.blog.repos.PostRepository;
 import com.bitsessential.blog.repos.SubCommentRepository;
@@ -33,29 +36,43 @@ public class PostController {
 	private PostRepository postDao;
 	private CommentRepository commentDao;
 	private SubCommentRepository subCommentDao;
+	private CategoryRepository categoryDao;
 	
-	public PostController(Connection<Facebook> conn, PostRepository repo, CommentRepository commentDao, SubCommentRepository subCommentDao) {
+	public PostController(Connection<Facebook> conn, PostRepository repo, CommentRepository commentDao, SubCommentRepository subCommentDao, CategoryRepository catDao) {
         this.facebookConn = conn;
         this.postDao = repo;
         this.commentDao = commentDao;
     	this.subCommentDao = subCommentDao;
+    	this.categoryDao = catDao;
     }
 	
 	@RequestMapping("")
-	public String listAllPosts(Model model, @PageableDefault(sort = {"postId"}, direction = Direction.DESC, size = 5) Pageable pageable) {
+	public String listAllPosts(Model model, @PageableDefault(sort = {"postId"}, direction = Direction.DESC, size = 6) Pageable pageable) {
 		Page<Post> posts = postDao.findAll(pageable);
 		model.addAttribute("posts", posts);
 		return "index";
 	}
 	
 	@RequestMapping(value = "/post", method = RequestMethod.POST)
-	public String createPost(Post post) {
+	public String createPost(@RequestParam("postContent") String postContent,
+							 @RequestParam("postTitle") String postTitle,
+							 @RequestParam("postDescription") String postDesc,
+							 @RequestParam("postCategory") long postCat
+							) {
+		Optional<Category> cat = categoryDao.findById(postCat);
+		
+		Post post = new Post();
+		post.setPostContent(postContent);
+		post.setPostTitle(postTitle);
+		post.setPostDescription(postDesc);
+		post.setPostCategory(cat.get());
+		
 		postDao.save(post);
-		return "redirect:/posts";
+		return "redirect:/admin/main";
 	}
 
 	@RequestMapping(value = "/post/{id}", method = RequestMethod.GET)
-	public String getPost(Model model, @PathVariable long id) {
+	public String getPost(Model model, @PathVariable long id) throws Exception {
 		Optional<Post> post = postDao.findById(id);
 		
 		List<Comment> comments = commentDao.findAllByPostPostId(id);
@@ -75,6 +92,8 @@ public class PostController {
 		
 		if (post.isPresent()) {
 			model.addAttribute("post", post.get());
+		} else {
+			throw new Exception();
 		}
 		
 		try {

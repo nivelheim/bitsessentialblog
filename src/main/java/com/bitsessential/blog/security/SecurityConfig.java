@@ -24,8 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
         		.authorizeRequests()
-	                .antMatchers(HttpMethod.GET, "/editor").hasAuthority("admin")
-	                .antMatchers(HttpMethod.GET, "/editor/**").hasAuthority("admin")
+	                .antMatchers(HttpMethod.GET, "/admin/*").hasAuthority("admin")
 	                .antMatchers(HttpMethod.POST, "/post").hasAuthority("admin")
 	                .antMatchers(HttpMethod.POST, "/comments").hasAuthority("FACEBOOK_USER")
 	                .antMatchers(HttpMethod.POST, "/comments").hasAuthority("admin")
@@ -35,15 +34,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 	.loginProcessingUrl("/login")
                     .usernameParameter("username")
                     .passwordParameter("password")
-                    .defaultSuccessUrl("/post/list")	
+                    .defaultSuccessUrl("/admin/main")	
                 	.permitAll()
                 	.and()
                 .logout()    //logout configuration
             		.logoutUrl("/app-logout") 
             		.logoutSuccessUrl("/app/login")
-            		.and()
-            	.exceptionHandling() //exception handling configuration
-            		.accessDeniedPage("/error");
+            		.and();
+            	//.exceptionHandling(); //exception handling configuration
+            	//	.accessDeniedPage("/error");
     }
     
     

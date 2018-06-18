@@ -29,7 +29,6 @@ public class Post {
 	@Column
 	private String postTitle;
 	
-	@NotNull
 	@Size(min = 1, max = 100000000)
 	@Column
 	private String postDescription;

@@ -13,31 +13,35 @@
 			<!-- Blog Entries Column -->
 			<div class="col-md-9">
 				<h1 class="my-4">Page Heading<small>Secondary Text</small></h1>
-
+				
 				<div class="row">
-			        <div class="col-lg-4 col-sm-6 portfolio-item">
-			        	<th:block th:if="${posts} != null">
-				        <div class="card h-100">
-					        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-					        <div class="card-body">
-						        <h4 class="card-title">
-						        <a href="#">Project One</a>
-						        </h4>
-						        <p class="card-text"></p>
+					<th:block th:switch="${posts} == null">
+						<th:block th:case="false"  >
+			        	<div class="col-lg-4 col-sm-6 portfolio-item" th:each="post : ${posts}"> 	
+					        <div class="card h-100">
+						        <img class="card-img-top" src="http://placehold.it/700x400" alt="">
+						        <div class="card-body">
+							        <h4 class="card-title">
+							        <a th:href="@{'/posts/post/' + ${post.postId}}" th:text="${post.postTitle}"></a>
+							        </h4>
+							        <p class="card-text" th:text="${post.postDescription}"></p>
+						        </div>
 					        </div>
-				        </div>
-				        </th:block>
-			        </div>
-      			</div>
-      <!-- /.row -->
-
+					    </div>
+					    </th:block>
+					    
+				        <div th:case="*">
+				        	<h3>No posts exist.</h3>
+				        </div>   
+			        </th:block>
+				</div>
 				<!-- Pagination -->
 				<ul class="pagination justify-content-center mb-4">
 					<li class="page-item" th:classappend="${posts.first} ? disabled : ''"><a class="page-link" id="newButton" th:href="@{'?page=' + ${posts.number-1}}">&larr; Newer</a></li>
 					<li class="page-item" th:classappend="${posts.last} ? disabled : ''"><a class="page-link" id="oldButton" th:href="@{'?page=' + ${posts.number+1}}">Older &rarr;</a></li>
 				</ul>
-
 			</div>
+			
 
 			<!-- Sidebar Widgets Column -->
 			<div th:replace="fragments/sidebar :: side"></div>

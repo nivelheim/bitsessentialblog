@@ -1,0 +1,45 @@
+<head th:fragment="header">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	
+	<title>Admin Panel</title>
+	
+	 <!-- Bootstrap core CSS -->
+	<link href="/sources/bootstrap/css/bootstrap.css" rel="stylesheet">
+	<link href="/sources/ckeditor/render_contents.css" rel="stylesheet">
+	
+	<!-- Custom styles for this template -->
+	<link href="/sources/css/sb-admin.css" rel="stylesheet">
+	  
+	<script src="/sources/jquery/jquery-3.3.1.js"></script>
+	<script src="/sources/popper/popper.js"></script>
+	<script src="/sources/bootstrap/js/bootstrap.js"></script>
+	<script src="/sources/ckeditor/ckeditor.js"></script>
+	<script>
+		$(document).ready(function() {
+			var postIndex = 0;
+			
+			$(".postItem").click(function() {
+				$(".selectedRow").removeClass("selectedRow");
+				$(this).addClass("selectedRow");
+				postIndex = $(this).find("td:first").text();
+			});
+
+			$("#deletePost").submit(function() {
+				$(this).attr("action", "/posts/post/" + postIndex);
+			});
+
+			$("#editPost").submit(function() {
+				$(this).attr("action", "/posts/post/" + postIndex);
+			});
+
+			if ($("#editor").length) {
+				CKEDITOR.replace( 'editor' );
+			}		
+			
+			
+		});
+	</script>
+</head>

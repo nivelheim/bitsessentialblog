@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="admin/fragments/header :: header"></head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <nav th:replace="admin/fragments/navigation :: nav"></nav>
+  
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-8">
+          <h4>Write A Post</h4>
+          <hr/>
+		  <form action="/posts/post" method="post">
+			<input type="text" name="postTitle" placeholder="Subject" id="postTitle" class="form-control" />
+			<input type="text" name="postDescription" placeholder="Description" id="postDescription" class="form-control" />
+			<select class="form-control" id="categories" name="postCategory" placeholder="Category" required>
+		      <option th:each="cat : ${categories}" th:text="${cat.categoryName}" th:value="${cat.categoryId}"></option>
+		    </select>
+		    <hr>
+			
+			<textarea name="postContent" id="editor" rows="10"></textarea>
+			<hr>
+			<button type="submit" class="btn btn-primary btn-lg btn-block">Save</button>
+			
+			
+		 </form>
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>Copyright © Your Website 2018</small>
+        </div>
+      </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    
+    <nav th:replace="admin/fragments/modal :: modal"></nav>
+    
+  </div>
+</body>
+
+</html>

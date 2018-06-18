@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="admin/fragments/header :: header"></head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <nav th:replace="admin/fragments/navigation :: nav"></nav>
+  
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-8">
+        	<h4>Post List</h4>
+      		<hr/>
+        	<div class="tableHeader">
+        		<div>Post ID</div>
+          		<div>Post Title</div>
+          		<div>Post Description</div>
+          		<div>Post Date</div>
+        	</div>
+        	<div class="tableRow postItem" th:each="post : ${posts}">
+        		<div th:text="${post.postId}"></div>
+          		<div th:text="${post.postTitle}"></div>
+          		<div th:text="${post.postDescription}"></div>
+          		<div th:text="${#temporals.format(post.postDate, 'yyyy/MM/dd HH:mm')}"></div>
+        	</div>
+            <hr/>
+            <form action="" method="GET" id="editPost" class="buttonForm">
+ 		  		<button type="submit" id="editButton" class="btn btn-primary btn-md btn-block buttonSize">Edit</button>
+		    </form>
+            <form action="" method="GET" id="deletePost" class="buttonForm">
+ 		  		<button type="submit" id="deleteButton" class="btn btn-primary btn-md btn-block buttonSize">Delete</button>
+		    </form>
+		  
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>Copyright © Your Website 2018</small>
+        </div>
+      </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-primary" href="login.html">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
