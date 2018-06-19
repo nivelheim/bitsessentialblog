@@ -28,6 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	                .antMatchers(HttpMethod.POST, "/post").hasAuthority("admin")
 	                .antMatchers(HttpMethod.POST, "/comments").hasAuthority("FACEBOOK_USER")
 	                .antMatchers(HttpMethod.POST, "/comments").hasAuthority("admin")
+	                .antMatchers(HttpMethod.POST, "/storage/*").permitAll()
 	                .and()
                 .formLogin()
                 	.loginPage("/user/login")

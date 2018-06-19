@@ -45,7 +45,7 @@ public class AdminController {
 	@RequestMapping(value = "/category", method = RequestMethod.POST)
 	public String addCategory(Category category) {
 		cateRepo.save(category);
-		return "admin/category";
+		return "redirect:/admin/category";
 	}
 	
 	@RequestMapping(value = "/category/", method = RequestMethod.POST)

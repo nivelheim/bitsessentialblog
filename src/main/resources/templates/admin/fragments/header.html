@@ -24,20 +24,24 @@
 			$(".postItem").click(function() {
 				$(".selectedRow").removeClass("selectedRow");
 				$(this).addClass("selectedRow");
-				postIndex = $(this).find("td:first").text();
+				postIndex = $(this).find("div:first").text();
+				console.log(postIndex);
 			});
 
 			$("#deletePost").submit(function() {
-				$(this).attr("action", "/posts/post/" + postIndex);
+				$(this).attr("action", "/posts/post/delete/" + postIndex);
 			});
 
 			$("#editPost").submit(function() {
-				$(this).attr("action", "/posts/post/" + postIndex);
+				$(this).attr("action", "/posts/post/edit/" + postIndex);
 			});
 
 			if ($("#editor").length) {
-				CKEDITOR.replace( 'editor' );
-			}		
+				CKEDITOR.replace( 'editor', {
+					filebrowserImageUploadUrl: '/browser/browse.php?type=Files'
+				});
+			}					
+
 			
 			
 		});

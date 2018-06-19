@@ -14,6 +14,7 @@ public class ExceptionController {
     public String handleError(HttpServletRequest request, Exception e, Model model)   {
         //Logger.getLogger(getClass().getName()).log(Level.SEVERE, "Request: " + request.getRequestURL() + " raised " + e);
     	model.addAttribute("code", e.getMessage());
+    	e.printStackTrace();
         return "error";
     }
 

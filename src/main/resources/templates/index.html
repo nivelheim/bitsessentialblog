@@ -19,7 +19,7 @@
 						<th:block th:case="false"  >
 			        	<div class="col-lg-4 col-sm-6 portfolio-item" th:each="post : ${posts}"> 	
 					        <div class="card h-100">
-						        <img class="card-img-top" src="http://placehold.it/700x400" alt="">
+						        <img class="card-img-top indexImage" th:src="${post.postImage} != null ? ${post.postImage} : 'http://placehold.it/700x400'" alt="Card image cap">
 						        <div class="card-body">
 							        <h4 class="card-title">
 							        <a th:href="@{'/posts/post/' + ${post.postId}}" th:text="${post.postTitle}"></a>

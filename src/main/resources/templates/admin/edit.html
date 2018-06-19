@@ -2,6 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="admin/fragments/header :: header"></head>
+<script type="text/javascript" th:inline="javascript">
+	  $(document).ready(function() {
+		  CKEDITOR.instances['editor'].setData( /*[[${post.postContent}]]*/ );
+	  });	
+</script>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <nav th:replace="admin/fragments/navigation :: nav"></nav>
@@ -12,17 +17,19 @@
         <div class="col-8">
           <h4>Write A Post</h4>
           <hr/>
-		  <form action="/posts/post" method="post" enctype="multipart/form-data">
-			<input type="text" name="postTitle" placeholder="Subject" id="postTitle" class="form-control" />
-			<input type="text" name="postDescription" placeholder="Description" id="postDescription" class="form-control" />
+		  <form action="/posts/post/edit" method="post" enctype="multipart/form-data">
+		  	<input type="text" id="postId" name="postId" class="form-control" th:value="${post.postId}" style="display: none"/>
+			<input type="text" name="postTitle" placeholder="Subject" id="postTitle" class="form-control" th:value="${post.postTitle}"/>
+			<input type="text" name="postDescription" placeholder="Description" id="postDescription" class="form-control" th:value="${post.postDescription}"/>
 			<select class="form-control" id="categories" name="postCategory" placeholder="Category" required>
-		      <option th:each="cat : ${categories}" th:text="${cat.categoryName}" th:value="${cat.categoryId}"></option>
+		      <option th:each="cat : ${categories}" th:text="${cat.categoryName}" th:value="${cat.categoryId}" th:attrappend="selected=${cat.categoryName} == ${post.postCategory.categoryId}? selected"></option>
 		    </select>
 		    <hr>
 			
 			<textarea name="postContent" id="editor" rows="10"></textarea>
 			<h6>Upload Post Header Image</h6>
 			<input type="file" name="postImage" id="postImage" accept="image/*" />
+			<p th:text="'Current file: ' + ${post.postImage}"></p>
 			<hr>
 			<button type="submit" class="btn btn-primary btn-lg btn-block">Save</button>
 			

@@ -13,7 +13,6 @@
 
    <!-- Custom styles for this template -->
    <link href="/sources/css/blog-home.css" rel="stylesheet">
-   <link href="/sources/css/sb-admin.css" rel="stylesheet">
    
 	<script src="/sources/jquery/jquery-3.3.1.js"></script>
 	<script src="/sources/popper/popper.js"></script>
@@ -23,7 +22,9 @@
 	<script type="text/javascript" th:inline="javascript">
 		$(document).ready(function() {
 			if ($("#editor").length) {
-				CKEDITOR.replace( 'editor' );
+				CKEDITOR.replace( 'editor', {
+					filebrowserImageUploadUrl: '/browser/browse.php?type=Files'
+				});
 			}			
 
 			if ($(".replyButton").length) {

@@ -29,9 +29,13 @@ public class Post {
 	@Column
 	private String postTitle;
 	
-	@Size(min = 1, max = 100000000)
+	@Size(min = 1, max = 1000)
 	@Column
 	private String postDescription;
+	
+	@Size(min = 1, max = 1000)
+	@Column
+	private String postImage;
 	
 	@NotNull
 	@Size(min = 1, max = 100000000)
@@ -70,6 +74,14 @@ public class Post {
 
 	public void setPostDescription(String postDescription) {
 		this.postDescription = postDescription;
+	}
+
+	public String getPostImage() {
+		return postImage;
+	}
+
+	public void setPostImage(String postImage) {
+		this.postImage = postImage;
 	}
 
 	public String getPostContent() {
