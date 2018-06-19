@@ -2,7 +2,7 @@
 Spring Boot MVC + Thymeleaf + Hibernate based Blog Application. Uses Amazon S3 for post image upload, and Amazon RDS for database storage.
 
 ## About
-This is an open-source blog to populate own blogging platform. Libraries used can easily be interchanged for your use of purpose.
+This is an open-source blog to populate own blogging platform. Libraries used can easily be interchanged depending on your taste of libraries.
 
 ## Issues
 Currenrly in-editor image upload is not implemented. To impelment, please refer to 
