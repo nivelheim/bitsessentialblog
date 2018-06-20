@@ -1,7 +1,7 @@
 # bitsessentialblog 
 Spring Boot MVC + Thymeleaf + Hibernate based Blog Application. Uses Amazon S3 for post image upload, and Amazon RDS for database storage.
 
-##Live Demo
+## Live Demo
 Available [here](https://bitsessentialblog.azurewebsites.net/)
 
 ## About
