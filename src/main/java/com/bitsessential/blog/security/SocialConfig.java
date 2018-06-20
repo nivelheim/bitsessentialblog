@@ -68,7 +68,7 @@ public class SocialConfig extends SocialConfigurerAdapter {
     @Bean
     public ProviderSignInController providerSignInController(ConnectionFactoryLocator connectionFactoryLocator, UsersConnectionRepository usersConnectionRepository, Environment environment) {
         ProviderSignInController controller = new ProviderSignInController(connectionFactoryLocator, usersConnectionRepository, new FacebookSignInAdapter());
-        controller.setApplicationUrl(environment.getProperty("application.url"));
+        controller.setApplicationUrl("https://bitsessentialblog.azurewebsites.net");
         return controller;
     }
     

@@ -6,7 +6,6 @@
 	<groupId>com.bitsessential.blog</groupId>
 	<artifactId>BitsEssentialBlog</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
 
 	<name>BitsEssentialBlog</name>
 	<description>BitsEssentialBlog project for Spring Boot</description>

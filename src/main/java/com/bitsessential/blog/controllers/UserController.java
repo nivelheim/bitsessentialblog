@@ -20,16 +20,19 @@ public class UserController {
 	@Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-
+	/*
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public void register(@RequestBody ApplicationUser user) {
+    public String register(@RequestBody ApplicationUser user) {
         user.setUserPassword(bCryptPasswordEncoder.encode(user.getUserPassword()));
         userDao.save(user);
+        
+        return "/admin/login";
     }
+    */
     
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
-        return "/admin/login";
+        return "admin/login";
     }
 	
 }
